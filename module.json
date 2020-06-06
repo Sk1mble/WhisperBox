@@ -1,7 +1,7 @@
 {
   "name": "WhisperBox",
   "title": "Whisper Box",
-  "description": "A module that allows you to create a dedicated whisper window (per player, if desired).",
+  "description": "A module that allows you to create a dedicated whisper window (per player A module that allows you to create a dedicated whisper window (with history, and per player if desired).",
   "author": "Richard Bellingham (Skimble)",
   "scripts": ["./WhisperBox.js"],
   "version": "1.0.0",
