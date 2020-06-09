@@ -6,8 +6,8 @@ class WhisperBox extends Application {
         this.target = target;
         this.user = game.user.id;
         this.combi=this.target+this.user;
-        this.content= {content:`<h2>History:</h2><p><textarea disabled name="whisperHistory" id ="whisperTextHistory${this.combi}" style="background: white; color: black;" rows ="10 cols="120"></textarea></p>
-        <h2>Message:</h2><p><textarea name="whisperText" id="whisperTextId${this.combi}" style="background: white; color: black;" rows="4" cols="120"></textarea></p>`}
+        this.content= {content:`<h2>History:</h2><p><textarea disabled name="whisperHistory" id ="whisperTextHistory${this.combi}" style="background: white; color: black; font-family: Arial;" rows ="10 cols="120"></textarea></p>
+        <h2>Message:</h2><p><textarea name="whisperText" id="whisperTextId${this.combi}" style="background: white; color: black; font-family: Arial" rows="4" cols="120"></textarea></p>`}
     }
 
     activateListeners(html) {
