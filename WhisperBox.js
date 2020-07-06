@@ -80,7 +80,7 @@ Hooks.on('renderTokenHUD', function(hudButtons, html, data){
             let name = data.name;
             opt.title=`Whispering to ${name}`;
             opt.width=400;
-            opt.height=400;
+            opt.height="auto";
             opt.minimizable=true;
             opt.resizable=true;
             var target=user._id;
