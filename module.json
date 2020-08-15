@@ -4,7 +4,7 @@
   "description": "A module that allows you to create a dedicated whisper window (with history, and per player, if desired).",
   "author": "Richard Bellingham (Skimble)",
   "scripts": ["./WhisperBox.js"],
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minimumCoreVersion": "0.6.0",
   "compatibleCoreVersion":"0.6.1",
   "download":"https://github.com/Sk1mble/WhisperBox/archive/master.zip"

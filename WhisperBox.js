@@ -20,8 +20,10 @@ class WhisperBox extends Application {
     //The following code detects the enter key being released and then sends the message.
     async _onEnterEvent(event, html, data) {
         if(event.keyCode === 13){
-            var whisper = document.getElementById(`whisperTextId${this.combi}`)
+            var whisper = event.target;
             var message= await ChatMessage.create({content : whisper.value, whisper : [this.target]})
+            whisper.value="";
+            whisper.focus();
             this.getHistory();
         }
       }
@@ -52,11 +54,9 @@ class WhisperBox extends Application {
                     }
                 }
           }
-          this.render(false);
+          //this.render(false);
           var whisper = document.getElementById(`whisperTextId${this.combi}`)
           if (whisper != undefined) {
-            whisper.value="";
-            whisper.focus();
             whisperHistory.scrollTop = whisperHistory.scrollHeight;
           }
       }
