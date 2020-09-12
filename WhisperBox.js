@@ -21,7 +21,7 @@ class WhisperBox extends Application {
     async _onEnterEvent(event, html, data) {
         if(event.keyCode === 13){
             var whisper = event.target;
-            var message= await ChatMessage.create({content : whisper.value, whisper : [this.target]})
+            var message= await ChatMessage.create({type:CHAT_MESSAGE_TYPES.WHISPER, content : whisper.value, whisper : [this.target]})
             whisper.value="";
             whisper.focus();
             this.getHistory();
