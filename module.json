@@ -7,5 +7,6 @@
   "version": "1.1.0",
   "minimumCoreVersion": "0.6.0",
   "compatibleCoreVersion":"0.7.1",
-  "download":"https://github.com/Sk1mble/WhisperBox/archive/master.zip"
+  "download":"https://github.com/Sk1mble/WhisperBox/archive/master.zip",
+  "manifest":"https://raw.githubusercontent.com/Sk1mble/WhisperBox/master/module.json"
 }
