@@ -1,10 +1,10 @@
 //This code works with WhisperBox. Save it as a macro to give yourself an alternative method 
 //of launching a WhisperBox that will also work for players.
 
-var users = game.users.entries;
+var users = game.users.contents;
 var selectOptions = ""
 users.forEach(user => selectOptions+=`<option value = "${user.id}">${user.name}</option>\n`);
-console.log(selectOptions);
+
 var dp = {
     title:"Create a WhisperBox",
     content:`Pick a user:<select id="users" name="users">${selectOptions}</select>`,

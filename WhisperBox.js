@@ -21,7 +21,7 @@ class WhisperBox extends Application {
     async _onEnterEvent(event, html, data) {
         if(event.keyCode === 13){
             var whisper = event.target;
-            var message= await ChatMessage.create({type:CHAT_MESSAGE_TYPES.WHISPER, content : whisper.value, whisper : [this.target]})
+            var message= await ChatMessage.create({type:CONST.CHAT_MESSAGE_TYPES.WHISPER, user: this.user, content : whisper.value, whisper : [this.target]})
             whisper.value="";
             whisper.focus();
             this.getHistory();
@@ -34,7 +34,7 @@ class WhisperBox extends Application {
           if (whisperHistory!=null && whisperHistory != undefined){
             whisperHistory.innerHTML="";
           }
-          let chatHistory = game.messages.entries;
+          let chatHistory = game.messages.contents;
         
           for (var i=0;i<chatHistory.length; i++){
               
@@ -67,7 +67,7 @@ class WhisperBox extends Application {
 }
 
 Hooks.on('renderTokenHUD', function(hudButtons, html, data){
-    var users = game.users.entries;
+    var users = game.users.contents;
     var user = users.find(user => user.data.character==data.actorId)
     if (user != undefined){
         let button = $(`<div class="control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`);
@@ -83,7 +83,7 @@ Hooks.on('renderTokenHUD', function(hudButtons, html, data){
             opt.height="auto";
             opt.minimizable=true;
             opt.resizable=true;
-            var target=user._id;
+            var target=user.id;
             var whisperbox = new WhisperBox (opt, data, target);
             await whisperbox.render(true);
             whisperbox.getHistory();
