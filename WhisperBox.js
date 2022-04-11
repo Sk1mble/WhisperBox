@@ -13,7 +13,7 @@ class WhisperBox extends Application {
     activateListeners(html) {
         super.activateListeners(html);
         var whisperField = html.find(`textarea[id='whisperTextId${this.combi}']`);
-        whisperField.on("keyup",event => this._onEnterEvent(event, html, this));
+        whisperField.on("keyup",event => this._onEnterEvent(event, html, this.data));
         this.getHistory();
       }   
 
@@ -39,16 +39,16 @@ class WhisperBox extends Application {
           for (var i=0;i<chatHistory.length; i++){
               
               //If the user in the chat message is me, and the whisper target in the chat history is the target of this Whisperbox, add the message to the log here.
-                if(this.user===chatHistory[i].user.id && chatHistory[i].whisper[0]===this.target) {
-                    var msgString = `${game.user.name}: ${chatHistory[i].content}`
+                if(this.user===chatHistory[i].data.user && chatHistory[i].data.whisper[0]===this.target) {
+                    var msgString = `${game.user.name}: ${chatHistory[i].data.content}`
                     if(whisperHistory != null && whisperHistory != undefined){
                         whisperHistory.innerHTML+=`${msgString}\n`;
                     }
                 }
 
                 //If the user in the chat message is the target of this whisperbox, and the whisper target in the chat history is me, add the message to the log here.
-                if(chatHistory[i].user.id===this.target && chatHistory[i].whisper[0]===this.user) {
-                    var msgString = `${chatHistory[i].user.name}: ${chatHistory[i].content}`
+                if(chatHistory[i].data.user===this.target && chatHistory[i].data.whisper[0]===this.user) {
+                    var msgString = `${chatHistory[i].user.data.name}: ${chatHistory[i].data.content}`
                     if (whisperHistory != null && whisperHistory != undefined){
                         whisperHistory.innerHTML+=`${msgString}\n`;
                     }
@@ -68,8 +68,7 @@ class WhisperBox extends Application {
 
 Hooks.on('renderTokenHUD', function(hudButtons, html, data){
     var users = game.users.contents;
-    var user = users.find(user => user.character.id==data.actorId);
-
+    var user = users.find(user => user.data.character==data.actorId)
     if (user != undefined){
         let button = $(`<div class="control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`);
         let col = html.find('.col.left');
