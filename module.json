@@ -18,7 +18,7 @@
   "system": [],
   "dependencies": [],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/master/module.json",
+  "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/development/module.json",
   "download": "https://github.com/Sk1mble/WhisperBox/archive/v2.0.0.zip",
   "protected": false,
   "coreTranslation": false,
