@@ -195,28 +195,7 @@ Hooks.on('renderTokenHUD', function (hudButtons, html, data) {
     }
 });
 
-Hooks.on('renderChatMessage', function (data, elt) {
-    if (game.settings.get('WhisperBox', 'openBoxOnAllWhispers')) {
-        if(data.data.whisper.length === 1 &&
-            (game.user.id === data.data.user ||
-            game.user.id === data.data.whisper[0])){
-
-            let targetUser = data.data.user;
-            if(game.user.id === data.data.user){
-                targetUser = data.data.whisper[0];
-            }
-
-            let name = game.users.get(targetUser)?.name;
-            if(game.settings.get('WhisperBox', 'showCharacterName')){
-                name = game.users.get(targetUser)?.character.name ?? name;
-            }
-
-            WhisperBox.createWhisperBox({name: name, targetUser: targetUser})
-        }
-    }
-});
-
-Hooks.on('ready', function () {
+Hooks.on('init', function () {
     game.settings.register('WhisperBox', 'openBoxOnAllWhispers', {
         name: 'Open box on all whispers',
         hint: 'Opens the box on whisper sending or receiving, and not just by using the button or macro',
@@ -233,5 +212,28 @@ Hooks.on('ready', function () {
         config: true,
         default: true,
         type: Boolean
+    });
+});
+
+Hooks.on('ready', function () {
+    Hooks.on('renderChatMessage', function (data, elt) {
+        if (game.settings.get('WhisperBox', 'openBoxOnAllWhispers')) {
+            if(data.data.whisper.length === 1 &&
+                (game.user.id === data.data.user ||
+                    game.user.id === data.data.whisper[0])){
+
+                let targetUser = data.data.user;
+                if(game.user.id === data.data.user){
+                    targetUser = data.data.whisper[0];
+                }
+
+                let name = game.users.get(targetUser)?.name;
+                if(game.settings.get('WhisperBox', 'showCharacterName')){
+                    name = game.users.get(targetUser)?.character.name ?? name;
+                }
+
+                WhisperBox.createWhisperBox({name: name, targetUser: targetUser})
+            }
+        }
     });
 });
