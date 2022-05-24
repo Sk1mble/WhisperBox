@@ -88,7 +88,10 @@ class WhisperBox extends Application {
             existingBoxes[combi] = whisperbox;
         }
 
-        whisperbox.render(true);
+        if(!whisperbox.rendered) {
+            whisperbox.render(true);
+        }
+
         whisperbox.getHistory();
 
         Hooks.on('renderChatMessage', function (html, data) {
