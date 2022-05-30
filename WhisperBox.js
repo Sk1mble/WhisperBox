@@ -182,7 +182,7 @@ Hooks.on('renderTokenHUD', function (hudButtons, html, data) {
         button.find('i').click(async (ev) => {
             let name = user.name;
             if(game.settings.get('WhisperBox', 'showCharacterName')){
-                name = user?.character.name ?? name;
+                name = user?.character?.name ?? name;
             }
 
             let whisperBoxData = {
@@ -229,7 +229,7 @@ Hooks.on('ready', function () {
 
                 let name = game.users.get(targetUser)?.name;
                 if(game.settings.get('WhisperBox', 'showCharacterName')){
-                    name = game.users.get(targetUser)?.character.name ?? name;
+                    name = game.users.get(targetUser)?.character?.name ?? name;
                 }
 
                 WhisperBox.createWhisperBox({name: name, targetUser: targetUser})
@@ -248,7 +248,7 @@ Hooks.on('getUserContextOptions', function (html, contextOptions) {
 
             let name = user.name;
             if(game.settings.get('WhisperBox', 'showCharacterName')){
-                name = user?.character.name ?? name;
+                name = user?.character?.name ?? name;
             }
 
             WhisperBox.createWhisperBox({name: name, targetUser: user.id});

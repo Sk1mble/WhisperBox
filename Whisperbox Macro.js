@@ -18,7 +18,7 @@ var dp = {
 
                 let name = user.name;
                 if (game.settings.get('WhisperBox', 'showCharacterName')) {
-                    name = user?.character.name ?? name;
+                    name = user?.character?.name ?? name;
                 }
 
                 WhisperBox.createWhisperBox({name: name, targetUser: uid});
