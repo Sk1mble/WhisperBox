@@ -1,12 +1,36 @@
 {
+  "id":"WhisperBox",
   "name": "WhisperBox",
   "title": "Whisper Box",
   "description": "A module that allows you to create a dedicated whisper window (with history, and per player, if desired).",
-  "author": "Richard Bellingham (Skimble)",
-  "scripts": ["./WhisperBox.js"],
-  "version": "1.1.1",
+  "authors": [{"name":"Richard Bellingham"}],
+  "flags": {},
+  "version": "2.0.1",
   "minimumCoreVersion": "0.8.0",
-  "compatibleCoreVersion":"0.8.0",
-  "download":"https://github.com/Sk1mble/WhisperBox/archive/v1.1.1.zip",
-  "manifest":"https://raw.githubusercontent.com/Sk1mble/WhisperBox/master/module.json"
+  "compatibleCoreVersion": "10.270",
+  "compatibility": {
+    "minimum":"10.270",
+    "verified":"10.270"
+  },
+  "scripts": [
+    "./WhisperBox.js"
+  ],
+  "esmodules": [],
+  "styles": [],
+  "languages": [],
+  "packs": [],
+  "system": [],
+  "dependencies": [],
+  "socket": false,
+  "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/development/module.json",
+  "download": "https://github.com/Sk1mble/WhisperBox/archive/v2.0.1.zip",
+  "protected": false,
+  "coreTranslation": false,
+  "library": false,
+  "url": "",
+  "license": "",
+  "readme": "",
+  "bugs": "",
+  "changelog": "",
+  "minimumSystemVersion": ""
 }
