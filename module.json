@@ -6,11 +6,11 @@
   "authors": [{"name":"Richard Bellingham"}],
   "flags": {},
   "version": "2.0.1",
-  "minimumCoreVersion": "0.8.0",
-  "compatibleCoreVersion": "10.270",
+  "minimumCoreVersion": "10.270",
+  "compatibleCoreVersion": "10.275",
   "compatibility": {
     "minimum":"10.270",
-    "verified":"10.270"
+    "verified":"10.275"
   },
   "scripts": [
     "./WhisperBox.js"
@@ -20,7 +20,6 @@
   "languages": [],
   "packs": [],
   "system": [],
-  "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/development/module.json",
   "download": "https://github.com/Sk1mble/WhisperBox/archive/v2.0.1.zip",
