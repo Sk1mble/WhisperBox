@@ -39,7 +39,7 @@ class WhisperBox extends Application {
           for (var i=0;i<chatHistory.length; i++){
               
               //If the user in the chat message is me, and the whisper target in the chat history is the target of this Whisperbox, add the message to the log here.
-                if(this.user===chatHistory[i].user.id && chatHistory[i].whisper[0]===this.target) {
+                if(this.user===chatHistory[i].user?.id && chatHistory[i].whisper[0]===this.target) {
                     var msgString = `${game.user.name}: ${chatHistory[i].content}`
                     if(whisperHistory != null && whisperHistory != undefined){
                         whisperHistory.innerHTML+=`${msgString}\n`;
@@ -68,7 +68,7 @@ class WhisperBox extends Application {
 
 Hooks.on('renderTokenHUD', function(hudButtons, html, data){
     var users = game.users.contents;
-    var user = users.find(user => user.character.id==data.actorId);
+    var user = users.find(user => user?.character?.id==data.actorId);
 
     if (user != undefined){
         let button = $(`<div class="control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`);
