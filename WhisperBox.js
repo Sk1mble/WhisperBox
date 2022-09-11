@@ -104,7 +104,7 @@ class WhisperBox extends Application {
     activateListeners(html) {
         super.activateListeners(html);
         var whisperField = html.find(`textarea[id='whisperTextId${this.combi}']`);
-        whisperField.on("keyup", event => this._onEnterEvent(event, html, this.data));
+        whisperField.on("keyup", event => this._onEnterEvent(event, html, this));
         this.getHistory();
     }
 
@@ -130,14 +130,14 @@ class WhisperBox extends Application {
             whisperHistory.html('');
 
             let relevantChatHistory = game.messages.contents.filter((msg) => {
-                return msg.data.whisper.length === 1 &&
-                    (this.user === msg.data.user && this.target === msg.data.whisper[0]) ||
-                    (this.target === msg.data.user && this.user === msg.data.whisper[0]);
+                return msg.whisper.length === 1 &&
+                    (this.user === msg.user.id && this.target === msg.whisper[0]) ||
+                    (this.target === msg.user.id && this.user === msg.whisper[0]);
             });
 
             for (let chatMessage of relevantChatHistory) {
                 let speaker = chatMessage.data.speaker.alias ?? chatMessage.user.name;
-                let whisperedTo = game.users.get(chatMessage.data.whisper[0])?.name ?? game.actors.get(chatMessage.data.whisper[0])?.name;
+                let whisperedTo = game.users.get(chatMessage.whisper[0])?.name ?? game.actors.get(chatMessage.whisper[0])?.name;
 
                 let chatMessageItem = $(`<li class="chat-message message flexcol whisper">
     <header class="message-header flexrow">
@@ -147,7 +147,7 @@ class WhisperBox extends Application {
         </span>
     </header>
     <div class="message-content">
-        ${chatMessage.data.content}
+        ${chatMessage.content}
     </div>
 </li>`);
 
@@ -173,7 +173,7 @@ class WhisperBox extends Application {
 
 Hooks.on('renderTokenHUD', function (hudButtons, html, data) {
     var users = game.users.contents;
-    var user = users.find(user => user.data.character === data.actorId)
+    var user = users.find(user => user.character === data.actorId)
     if (user) {
         let button = $(`<div class="control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`);
         let col = html.find('.col.left');
@@ -218,13 +218,13 @@ Hooks.on('init', function () {
 Hooks.on('ready', function () {
     Hooks.on('renderChatMessage', function (data, elt) {
         if (game.settings.get('WhisperBox', 'openBoxOnAllWhispers')) {
-            if(data.data.whisper.length === 1 &&
-                (game.user.id === data.data.user ||
-                    game.user.id === data.data.whisper[0])){
+            if(data.whisper.length === 1 &&
+                (game.user.id === data.user.id ||
+                    game.user.id === data.whisper[0])){
 
-                let targetUser = data.data.user;
-                if(game.user.id === data.data.user){
-                    targetUser = data.data.whisper[0];
+                let targetUser = data.user.id;
+                if(game.user.id === data.user.id){
+                    targetUser = data.whisper[0];
                 }
 
                 let name = game.users.get(targetUser)?.name;
