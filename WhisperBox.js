@@ -173,7 +173,7 @@ class WhisperBox extends Application {
 
 Hooks.on('renderTokenHUD', function (hudButtons, html, data) {
     var users = game.users.contents;
-    var user = users.find(user => user.character === data.actorId)
+    var user = users.find(user => user?.character?.id === data.actorId)
     if (user) {
         let button = $(`<div class="control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`);
         let col = html.find('.col.left');
