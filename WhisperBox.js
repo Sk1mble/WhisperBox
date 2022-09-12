@@ -23,7 +23,7 @@ class WhisperBox extends Application {
             "overflow-y": "auto",
             "overflow-x": "hidden",
             width: 'auto',
-            height: 'calc(100% - 35px)',
+            height: 'calc(100% - 60px)',
             padding: '0'
         });
 
