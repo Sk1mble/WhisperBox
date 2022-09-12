@@ -1,0 +1,10 @@
+.whisperBox .dialog-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100%;
+    flex: initial;
+}
