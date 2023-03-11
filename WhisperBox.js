@@ -131,15 +131,18 @@ class WhisperBox extends Application {
 
             let relevantChatHistory = game.messages.contents.filter((msg) => {
                 return msg.whisper.length === 1 &&
-                    (this.user === msg.user.id && this.target === msg.whisper[0]) ||
-                    (this.target === msg.user.id && this.user === msg.whisper[0]);
+                    (this.user === msg?.user?.id && this.target === msg?.whisper[0]) ||
+                    (this.target === msg?.user?.id && this.user === msg?.whisper[0]);
             });
 
             for (let chatMessage of relevantChatHistory) {
                 let speaker = chatMessage.data.speaker.alias ?? chatMessage.user.name;
                 let whisperedTo = game.users.get(chatMessage.whisper[0])?.name ?? game.actors.get(chatMessage.whisper[0])?.name;
-
-                let chatMessageItem = $(`<li class="chat-message message flexcol whisper">
+                let left = 5;
+                let right = 5;
+                if (this.user === chatMessage.user.id) left += 50;
+                if (this.target === chatMessage.user.id) right += 50;
+                let chatMessageItem = $(`<li class="chat-message message flexcol whisper" style="margin-right:${right}px; margin-left:${left}px">
     <header class="message-header flexrow">
         <h4 class="message-sender">${speaker}</h4>
         <span class="message-metadata">
