@@ -136,7 +136,8 @@ class WhisperBox extends Application {
             });
 
             for (let chatMessage of relevantChatHistory) {
-                let speaker = chatMessage.data.speaker.alias ?? chatMessage.user.name;
+                //The next line has changed from chatMessage.data.speaker.alias and we are now not compatible with Foundry versions 9 or lower.
+                let speaker = chatMessage.speaker.alias ?? chatMessage.user.name;
                 let whisperedTo = game.users.get(chatMessage.whisper[0])?.name ?? game.actors.get(chatMessage.whisper[0])?.name;
                 let left = 5;
                 let right = 5;
