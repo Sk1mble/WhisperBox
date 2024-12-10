@@ -175,15 +175,20 @@ class WhisperBox extends Application {
     }
 }
 
-Hooks.on('renderTokenHUD', function (hudButtons, html, data) {
+Hooks.on("renderTokenHUD", function (hudButtons, html, data) {
+    // if html is jquery, convert to HTMLElement - this is future proofing for when this does return an HTMLElement.
+    if (html instanceof jQuery){
+        html = $(html)[0];
+    }
+
     var users = game.users.contents;
     var user = users.find(user => user?.character?.id === data.actorId)
     if (user) {
-        let button = $(`<div class="control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`);
-        let col = html.find('.col.left');
-        col.append(button);
-
-        button.find('i').click(async (ev) => {
+        let button = `<button type="button" class="button control-icon whisperBox"><i class="fa fa-user-secret"></i></div>`;
+        let col = html.querySelector('.col.left');
+        col.insertAdjacentHTML("beforeend", button);
+        let buttonEl = html.querySelector("button.whisperBox");
+        buttonEl.addEventListener("click", (async (ev) => {
             let name = user.name;
             if(game.settings.get('WhisperBox', 'showCharacterName')){
                 name = user?.character?.name ?? name;
@@ -195,7 +200,7 @@ Hooks.on('renderTokenHUD', function (hudButtons, html, data) {
             }
 
             WhisperBox.createWhisperBox(whisperBoxData);
-        });
+        }));
     }
 });
 
@@ -226,17 +231,17 @@ Hooks.on('ready', function () {
                 (game.user.id === data.user.id ||
                     game.user.id === data.whisper[0])){
 
-                let targetUser = data.user.id;
-                if(game.user.id === data.user.id){
-                    targetUser = data.whisper[0];
-                }
+                    let targetUser = data.user.id;
+                    if(game.user.id === data.user.id){
+                        targetUser = data.whisper[0];
+                    }
 
-                let name = game.users.get(targetUser)?.name;
-                if(game.settings.get('WhisperBox', 'showCharacterName')){
-                    name = game.users.get(targetUser)?.character?.name ?? name;
-                }
+                    let name = game.users.get(targetUser)?.name;
+                    if(game.settings.get('WhisperBox', 'showCharacterName')){
+                        name = game.users.get(targetUser)?.character?.name ?? name;
+                     }
 
-                WhisperBox.createWhisperBox({name: name, targetUser: targetUser})
+                    WhisperBox.createWhisperBox({name: name, targetUser: targetUser})
             }
         }
     });
