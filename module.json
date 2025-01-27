@@ -1,33 +1,30 @@
 {
-  "id":"WhisperBox",
+  "id": "WhisperBox",
   "title": "Whisper Box",
   "description": "A module that allows you to create a dedicated whisper window (with history, and per player, if desired).",
-  "authors": [{"name":"Richard Bellingham"},{"name":"Jean-Baptiste Louvet"}],
-  "flags": {},
-  "version": "3.0.2",
-  "minimumCoreVersion": "12.316",
-  "compatibleCoreVersion": "12.316",
+  "authors": [
+    {
+      "name": "Richard Bellingham",
+      "flags": {}
+    },
+    {
+      "name": "Jean-Baptiste Louvet",
+      "flags": {}
+    }
+  ],
+  "version": "3.0.3",
   "compatibility": {
-    "minimum":"12.316",
-    "verified":"12.316"
+    "minimum": "12.316",
+    "verified": "12.331"
   },
   "scripts": [
-    "./WhisperBox.js"
+    "WhisperBox.js"
   ],
-  "esmodules": [],
-  "styles": ["./style.css"],
-  "languages": [],
-  "packs": [],
-  "socket": false,
+  "styles": [
+    {
+      "src": "style.css"
+    }
+  ],
   "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/master/module.json",
-  "download": "https://github.com/Sk1mble/WhisperBox/archive/refs/tags/v3.0.2.zip",
-  "protected": false,
-  "coreTranslation": false,
-  "library": false,
-  "url": "",
-  "license": "",
-  "readme": "",
-  "bugs": "",
-  "changelog": "",
-  "minimumSystemVersion": ""
+  "download": "https://github.com/Sk1mble/WhisperBox/archive/refs/tags/v3.0.3.zip"
 }
