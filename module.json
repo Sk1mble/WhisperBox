@@ -3,7 +3,7 @@
   "title": "Whisper Box",
   "description": "A module that allows you to create a dedicated whisper window (with history, and per player, if desired).",
   "authors": [{"name":"Richard Bellingham"},{"name":"Jean-Baptiste Louvet"}],
-  "version": "3.0.3",
+  "version": "3.0.4",
   "compatibility": {
     "minimum":"13.333",
     "verified":"13.334"
