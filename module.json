@@ -19,7 +19,7 @@
   "languages": [],
   "packs": [],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/development/module.json",
+  "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/master/module.json",
   "download": "https://github.com/Sk1mble/WhisperBox/archive/refs/tags/v3.0.2.zip",
   "protected": false,
   "coreTranslation": false,
