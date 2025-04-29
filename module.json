@@ -3,10 +3,10 @@
   "title": "Whisper Box",
   "description": "A module that allows you to create a dedicated whisper window (with history, and per player, if desired).",
   "authors": [{"name":"Richard Bellingham"},{"name":"Jean-Baptiste Louvet"}],
-  "version": "3.0.4",
+  "version": "3.0.5",
   "compatibility": {
-    "minimum":"13.333",
-    "verified":"13.334"
+    "minimum":"13.341",
+    "verified":"13.341"
   },
   "scripts": [
     "./WhisperBox.js"
@@ -14,7 +14,7 @@
   "styles": ["./style.css"],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Sk1mble/WhisperBox/development/module.json",
-  "download": "https://github.com/Sk1mble/WhisperBox/archive/refs/tags/v3.0.4.zip",
+  "download": "https://github.com/Sk1mble/WhisperBox/archive/refs/tags/v3.0.5.zip",
   "protected": false,
   "coreTranslation": false,
   "library": false
