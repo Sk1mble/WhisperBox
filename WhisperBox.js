@@ -253,7 +253,7 @@ Hooks.on('getUserContextOptions', function (html, contextOptions) {
         icon: '<i class="fas fa-comments"></i>',
         condition: () => true,
         callback: (li) => {
-            const user = game.users.get(li[0].dataset.userId);
+            const user = game.users.get(li.dataset.userId);
 
             let name = user.name;
             if(game.settings.get('WhisperBox', 'showCharacterName')){
