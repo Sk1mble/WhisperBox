@@ -113,7 +113,6 @@ class WhisperBox extends Application {
         if (event.keyCode === 13) {
             var whisper = event.target;
             await ChatMessage.create({
-                type: CONST.CHAT_MESSAGE_TYPES.WHISPER,
                 user: this.user,
                 content: whisper.value,
                 whisper: [this.target]
@@ -130,19 +129,20 @@ class WhisperBox extends Application {
             whisperHistory.html('');
 
             let relevantChatHistory = game.messages.contents.filter((msg) => {
+                console.log(msg.author.id);
                 return msg.whisper.length === 1 &&
-                    (this.user === msg?.user?.id && this.target === msg?.whisper[0]) ||
-                    (this.target === msg?.user?.id && this.user === msg?.whisper[0]);
+                    (this.user === msg?.author?.id && this.target === msg?.whisper[0]) ||
+                    (this.target === msg?.author?.id && this.user === msg?.whisper[0]);
             });
 
             for (let chatMessage of relevantChatHistory) {
                 //The next line has changed from chatMessage.data.speaker.alias and we are now not compatible with Foundry versions 9 or lower.
-                let speaker = chatMessage.speaker.alias ?? chatMessage.user.name;
+                let speaker = chatMessage.speaker.alias ?? chatMessage.author.name;
                 let whisperedTo = game.users.get(chatMessage.whisper[0])?.name ?? game.actors.get(chatMessage.whisper[0])?.name;
                 let left = 5;
                 let right = 5;
-                if (this.user === chatMessage.user.id) left += 50;
-                if (this.target === chatMessage.user.id) right += 50;
+                if (this.user === chatMessage.author.id) left += 50;
+                if (this.target === chatMessage.author.id) right += 50;
                 let chatMessageItem = $(`<li class="chat-message message flexcol whisper" style="margin-right:${right}px; margin-left:${left}px">
     <header class="message-header flexrow">
         <h4 class="message-sender">${speaker}</h4>
@@ -228,11 +228,11 @@ Hooks.on('ready', function () {
     Hooks.on('renderChatMessage', function (data, elt) {
         if (game.settings.get('WhisperBox', 'openBoxOnAllWhispers')) {
             if(data.whisper.length === 1 &&
-                (game.user.id === data.user.id ||
+                (game.user.id === data.author.id ||
                     game.user.id === data.whisper[0])){
 
-                    let targetUser = data.user.id;
-                    if(game.user.id === data.user.id){
+                    let targetUser = data.author.id;
+                    if(game.user.id === data.author.id){
                         targetUser = data.whisper[0];
                     }
 
