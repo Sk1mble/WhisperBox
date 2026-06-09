@@ -129,7 +129,6 @@ class WhisperBox extends Application {
             whisperHistory.html('');
 
             let relevantChatHistory = game.messages.contents.filter((msg) => {
-                console.log(msg.author.id);
                 return msg.whisper.length === 1 &&
                     (this.user === msg?.author?.id && this.target === msg?.whisper[0]) ||
                     (this.target === msg?.author?.id && this.user === msg?.whisper[0]);
